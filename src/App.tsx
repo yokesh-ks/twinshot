@@ -41,6 +41,28 @@ function PrivacyNote() {
   )
 }
 
+const footerLink = "font-medium text-foreground underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+
+function Copyright() {
+  return (
+    <footer className="flex flex-col gap-1 border-t pt-4 text-xs leading-relaxed text-muted-foreground">
+      <p>
+        Copyright &copy; 2026 by{" "}
+        <a href="https://www.ingeniousclan.com/" target="_blank" rel="noopener noreferrer" className={footerLink}>
+          Ingenious Clan
+        </a>
+        .
+      </p>
+      <p>
+        Made with <span aria-label="love" className="text-destructive">&hearts;</span> by{" "}
+        <a href="https://www.yokesh.in/" target="_blank" rel="noopener noreferrer" className={footerLink}>
+          Yokesh
+        </a>
+      </p>
+    </footer>
+  )
+}
+
 function Editor() {
   return (
     <div className="flex min-h-svh flex-col bg-background min-[900px]:h-svh">
@@ -59,6 +81,7 @@ function Editor() {
             <div className="flex flex-col gap-8 p-5">
               <LeftPanel />
               <PrivacyNote />
+              <Copyright />
             </div>
           </ScrollArea>
         </aside>
