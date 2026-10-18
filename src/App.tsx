@@ -53,16 +53,18 @@ function Editor() {
         >
           <Preview />
         </section>
-        <aside aria-label="Images and layout" className="min-h-0 border-b min-[900px]:col-start-1 min-[900px]:row-start-1 min-[900px]:border-r min-[900px]:border-b-0">
-          <ScrollArea className="min-[900px]:h-full">
+        <aside aria-label="Images and layout" className="min-h-0 min-w-0 border-b min-[900px]:col-start-1 min-[900px]:row-start-1 min-[900px]:border-r min-[900px]:border-b-0">
+          <ScrollArea className="min-[900px]:h-full [&_[data-slot=scroll-area-viewport]>div]:!block">
+
             <div className="flex flex-col gap-8 p-5">
               <LeftPanel />
               <PrivacyNote />
             </div>
           </ScrollArea>
         </aside>
-        <aside aria-label="Style and output" className="min-h-0 min-[900px]:col-start-3 min-[900px]:row-start-1 min-[900px]:border-l">
-          <ScrollArea className="min-[900px]:h-full">
+        <aside aria-label="Style and output" className="min-h-0 min-w-0 min-[900px]:col-start-3 min-[900px]:row-start-1 min-[900px]:border-l">
+          <ScrollArea className="min-[900px]:h-full [&_[data-slot=scroll-area-viewport]>div]:!block">
+
             <div className="p-5">
               <RightPanel />
             </div>
