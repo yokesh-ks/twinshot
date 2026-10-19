@@ -1,7 +1,8 @@
 import { useRef, useState } from "react"
-import { ChevronDown, Download, FileJson, FolderOpen, RotateCcw, Trash2 } from "lucide-react"
+import { ChevronDown, Download, FileJson, FolderOpen, Info, RotateCcw, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 import { ModeToggle } from "@/components/mode-toggle"
+import { BrandMark } from "@/components/twinshot/brand"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,21 +26,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { useEditor } from "@/twinshot/editor-context"
 import { downloadBlob, exportFilename, renderToBlob } from "@/twinshot/export"
 import { parseProject, serializeProject } from "@/twinshot/project-io"
-
-function BrandMark() {
-  return (
-    <div className="flex items-center gap-2.5">
-      <div aria-hidden className="relative size-7">
-        <span className="absolute inset-y-0 left-0 w-[15px] rounded-l-md bg-foreground" />
-        <span className="absolute inset-y-0 right-0 w-[11px] rounded-r-md border-2 border-l-0 border-foreground" />
-      </div>
-      <div className="leading-tight">
-        <h1 className="text-base font-semibold tracking-tight">TwinShot</h1>
-        <p className="hidden text-xs text-muted-foreground sm:block">Two images. One story.</p>
-      </div>
-    </div>
-  )
-}
 
 export function Header() {
   const { project, dispatch, assetMap, importProject } = useEditor()
@@ -141,6 +127,13 @@ export function Header() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#/about">
+            <Info />
+            <span className="hidden sm:inline">About</span>
+          </a>
+        </Button>
 
         <ModeToggle />
 

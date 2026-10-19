@@ -4,10 +4,13 @@ import { toast } from "sonner"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { AboutPage } from "@/components/twinshot/about-page"
+import { Copyright } from "@/components/twinshot/brand"
 import { Header } from "@/components/twinshot/header"
 import { LeftPanel } from "@/components/twinshot/left-panel"
 import { Preview } from "@/components/twinshot/preview"
 import { RightPanel } from "@/components/twinshot/right-panel"
+import { useHashRoute } from "@/hooks/use-hash-route"
 import { EditorProvider, useEditor } from "@/twinshot/editor-context"
 
 function GlobalPaste() {
@@ -41,28 +44,6 @@ function PrivacyNote() {
   )
 }
 
-const footerLink = "font-medium text-foreground underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
-
-function Copyright() {
-  return (
-    <footer className="flex flex-col gap-1 border-t pt-4 text-xs leading-relaxed text-muted-foreground">
-      <p>
-        Copyright &copy; 2026 by{" "}
-        <a href="https://www.ingeniousclan.com/" target="_blank" rel="noopener noreferrer" className={footerLink}>
-          Ingenious Clan
-        </a>
-        .
-      </p>
-      <p>
-        Made with <span aria-label="love" className="text-destructive">&hearts;</span> by{" "}
-        <a href="https://www.yokesh.in/" target="_blank" rel="noopener noreferrer" className={footerLink}>
-          Yokesh
-        </a>
-      </p>
-    </footer>
-  )
-}
-
 function Editor() {
   return (
     <div className="flex min-h-svh flex-col bg-background min-[900px]:h-svh">
@@ -81,7 +62,7 @@ function Editor() {
             <div className="flex flex-col gap-8 p-5">
               <LeftPanel />
               <PrivacyNote />
-              <Copyright />
+              <Copyright className="border-t pt-4" />
             </div>
           </ScrollArea>
         </aside>
@@ -99,10 +80,11 @@ function Editor() {
 }
 
 export function App() {
+  const route = useHashRoute()
   return (
     <TooltipProvider delayDuration={300}>
       <EditorProvider>
-        <Editor />
+        {route === "about" ? <AboutPage /> : <Editor />}
         <Toaster position="bottom-center" />
       </EditorProvider>
     </TooltipProvider>
